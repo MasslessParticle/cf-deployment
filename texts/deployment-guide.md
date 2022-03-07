@@ -242,7 +242,7 @@ export BOSH_CLIENT=admin
 export BOSH_CLIENT_SECRET="$(bosh int <PATH_TO_DIRECTOR_VARS_STORE>/creds.yml --path /admin_password)"
 export BOSH_CA_CERT="$(bosh interpolate <PATH_TO_DIRECTOR_VARS_STORE>/creds.yml --path /director_ssl/ca)"
 
-export CREDHUB_SERVER=https://192.168.50.6:8844
+export CREDHUB_SERVER=https://192.168.56.6:8844
 export CREDHUB_CLIENT=credhub-admin
 export CREDHUB_SECRET=$(bosh interpolate <PATH_TO_DIRECTOR_VARS_STORE>/creds.yml --path=/credhub_admin_client_secret)
 export CREDHUB_CA_CERT="$(bosh interpolate <PATH_TO_DIRECTOR_VARS_STORE>/creds.yml --path=/credhub_tls/ca )"$'\n'"$( bosh interpolate <PATH_TO_DIRECTOR_VARS_STORE>/creds.yml --path=/uaa_ssl/ca)"
@@ -252,7 +252,7 @@ Concatenating them together in the env var without the new line in-between will 
 
 Then, deploy CF:
 ```
-bosh -e 192.168.50.6 -d cf deploy \
+bosh -e 192.168.56.6 -d cf deploy \
   cf-deployment.yml \
   -o operations/bosh-lite.yml \
   -v system_domain=bosh-lite.com
